@@ -27,8 +27,8 @@ namespace SportsStore.Tests
                 f.GetUrlHelper(It.IsAny<ActionContext>()))
                     .Returns(urlHelper.Object);
 
-            PageLinkTageHelper helper =
-                new PageLinkTageHelper(urlHelperFactory.Object)
+            PageLinkTagHelper helper =
+                new PageLinkTagHelper(urlHelperFactory.Object)
                 {
                     PageModel = new PagingInfo
                     {
