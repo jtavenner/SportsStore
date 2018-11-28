@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SportsStore.Models.ViewModels
+namespace TravelsStore.Models.ViewModels
 {
     public class PagingInfo
     {

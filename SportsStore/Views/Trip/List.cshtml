@@ -1,8 +1,8 @@
-﻿@model ProductListViewModel
+﻿@model TripListViewModel
 
-@foreach (var p in Model.Products)
+@foreach (var p in Model.Trips)
 {
-    @Html.Partial("ProductSummary", p)
+    @Html.Partial("TripSummary", p)
 }
 
 <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"

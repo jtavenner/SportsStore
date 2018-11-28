@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Routing;
 using Moq;
-using SportsStore.Components;
-using SportsStore.Models;
+using TravelsStore.Components;
+using TravelsStore.Models;
 using Xunit;
 
-namespace SportsStore.Tests
+namespace TravelsStore.Tests
 {
     public class NavigationMenuViewComponentTests
     {
@@ -16,14 +16,14 @@ namespace SportsStore.Tests
         public void Can_Select_Categories()
         {
             //arrange
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns((new Product[]
+            Mock<ITripRepository> mock = new Mock<ITripRepository>();
+            mock.Setup(m => m.Trips).Returns((new Trip[]
             {
-                new Product {ProductID = 1, Name = "P1", Category = "Apples"},
-                new Product {ProductID = 2, Name = "P2", Category = "Apples"},
-                new Product {ProductID = 3, Name = "P3", Category = "Plums"},
-                new Product {ProductID = 4, Name = "P4", Category = "Oranges"},
-            }).AsQueryable<Product>());
+                new Trip {TripID = 1, Name = "P1", Category = "Apples"},
+                new Trip {TripID = 2, Name = "P2", Category = "Apples"},
+                new Trip {TripID = 3, Name = "P3", Category = "Plums"},
+                new Trip {TripID = 4, Name = "P4", Category = "Oranges"},
+            }).AsQueryable<Trip>());
 
             NavigationMenuViewComponent target = new NavigationMenuViewComponent(mock.Object);
 
@@ -40,12 +40,12 @@ namespace SportsStore.Tests
             //Arrange
             string categoryToSelect = "Apples";
 
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns((new Product[]
+            Mock<ITripRepository> mock = new Mock<ITripRepository>();
+            mock.Setup(m => m.Trips).Returns((new Trip[]
             {
-                new Product {ProductID = 1, Name = "P1", Category = "Apples"},
-                new Product {ProductID = 4, Name = "P2", Category = "Oranges"},
-            }).AsQueryable<Product>());
+                new Trip {TripID = 1, Name = "P1", Category = "Apples"},
+                new Trip {TripID = 4, Name = "P2", Category = "Oranges"},
+            }).AsQueryable<Trip>());
 
             NavigationMenuViewComponent target = new NavigationMenuViewComponent(mock.Object);
             target.ViewComponentContext = new ViewComponentContext

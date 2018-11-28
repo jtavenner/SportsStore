@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SportsStore.Models;
+using TravelsStore.Models;
 
-namespace SportsStore.Migrations
+namespace TravelsStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -18,9 +18,9 @@ namespace SportsStore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SportsStore.Models.Product", b =>
+            modelBuilder.Entity("TravelsStore.Models.Trip", b =>
                 {
-                    b.Property<int>("ProductID")
+                    b.Property<int>("TripID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -32,9 +32,9 @@ namespace SportsStore.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.HasKey("ProductID");
+                    b.HasKey("TripID");
 
-                    b.ToTable("Products");
+                    b.ToTable("Trips");
                 });
 #pragma warning restore 612, 618
         }

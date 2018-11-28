@@ -1,8 +1,8 @@
-﻿namespace SportsStore.Models
+﻿namespace TravelsStore.Models
 {
-    public class Product
+    public class Trip
     {
-        public int ProductID { get; set; }
+        public int TripID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }

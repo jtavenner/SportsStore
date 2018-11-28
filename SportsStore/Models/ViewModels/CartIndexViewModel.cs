@@ -1,6 +1,6 @@
-﻿using SportsStore.Models;
+﻿using TravelsStore.Models;
 
-namespace SportsStore.Models.ViewModels
+namespace TravelsStore.Models.ViewModels
 {
     public class CartIndexViewModel
     {

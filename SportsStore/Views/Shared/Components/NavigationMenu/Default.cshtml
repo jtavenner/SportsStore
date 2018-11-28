@@ -2,7 +2,7 @@
 
 <a class="btn btn-block btn-secondary"
     asp-action="List"
-    asp-controller="Product"
+    asp-controller="Trip"
     asp-route-category="">
         Home
 </a>
@@ -12,9 +12,9 @@
     <a class="btn btn-block 
        @(category == ViewBag.SelectedCategory ? "btn-primary" : "btn-secondary")"
         asp-action="List"
-        asp-controller="Product"
+        asp-controller="Trip"
         asp-route-category="@category"
-        asp-route-productPage="1">
+        asp-route-tripPage="1">
             @category
     </a>
 }

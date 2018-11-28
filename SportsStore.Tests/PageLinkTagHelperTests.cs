@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Moq;
-using SportsStore.Infrastructure;
-using SportsStore.Models.ViewModels;
+using TravelsStore.Infrastructure;
+using TravelsStore.Models.ViewModels;
 using Xunit;
 
-namespace SportsStore.Tests
+namespace TravelsStore.Tests
 {
     public class PageLinkTagHelperTests
     {

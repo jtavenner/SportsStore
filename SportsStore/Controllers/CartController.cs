@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using SportsStore.Models;
-using SportsStore.Models.ViewModels;
+using TravelsStore.Models;
+using TravelsStore.Models.ViewModels;
 
-namespace SportsStore.Controllers
+namespace TravelsStore.Controllers
 {
     public class CartController : Controller
     {
-        private IProductRepository repository;
+        private ITripRepository repository;
         private Cart cart;
 
-        public CartController(IProductRepository repo, Cart cartService)
+        public CartController(ITripRepository repo, Cart cartService)
         {
             repository = repo;
             cart = cartService;
@@ -26,27 +26,27 @@ namespace SportsStore.Controllers
             });
         }
 
-        public RedirectToActionResult AddToCart(int productID, string returnUrl)
+        public RedirectToActionResult AddToCart(int tripID, string returnUrl)
         {
-            Product product = repository.Products
-                .FirstOrDefault(p => p.ProductID == productID);
+            Trip trip = repository.Trips
+                .FirstOrDefault(p => p.TripID == tripID);
 
-            if (product != null)
+            if (trip != null)
             {
-                cart.AddItem(product, 1);
+                cart.AddItem(trip, 1);
             }
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToActionResult RemoveFromCart(int productID, string returnUrl)
+        public RedirectToActionResult RemoveFromCart(int tripID, string returnUrl)
         {
-            Product product = repository.Products
-                .FirstOrDefault(p => p.ProductID == productID);
+            Trip trip = repository.Trips
+                .FirstOrDefault(p => p.TripID == tripID);
 
-            if (product != null)
+            if (trip != null)
             {
-                cart.RemoveLine(product);
+                cart.RemoveLine(trip);
             }
 
             return RedirectToAction("Index", new { returnUrl });

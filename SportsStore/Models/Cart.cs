@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SportsStore.Models
+namespace TravelsStore.Models
 {
     public class Cart
     {
         private List<CartLine> lineCollection = new List<CartLine>();
 
-        public virtual void AddItem(Product product, int quantity)
+        public virtual void AddItem(Trip trip, int quantity)
         {
             CartLine line = lineCollection
-                .Where(p => p.Product.ProductID == product.ProductID)
+                .Where(p => p.Trip.TripID == trip.TripID)
                 .FirstOrDefault();
 
             if (line == null)
             {
                 lineCollection.Add(new CartLine
                 {
-                    Product = product,
+                    Trip = trip,
                     Quantity = quantity
                 });
             }
@@ -27,11 +27,11 @@ namespace SportsStore.Models
             }
         }
 
-        public virtual void RemoveLine(Product product) =>
-            lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
+        public virtual void RemoveLine(Trip trip) =>
+            lineCollection.RemoveAll(l => l.Trip.TripID == trip.TripID);
 
         public virtual decimal ComputeTotalValue() =>
-            lineCollection.Sum(e => e.Product.Price * e.Quantity);
+            lineCollection.Sum(e => e.Trip.Price * e.Quantity);
 
         public virtual void Clear() => lineCollection.Clear();
 
@@ -41,7 +41,7 @@ namespace SportsStore.Models
     public class CartLine
     {
         public int CartLineID { get; set; }
-        public Product Product { get; set; }
+        public Trip Trip { get; set; }
         public int Quantity { get; set; }
     }
 }

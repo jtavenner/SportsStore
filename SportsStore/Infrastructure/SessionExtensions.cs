@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace SportsStore.Infrastructure
+namespace TravelsStore.Infrastructure
 {
     public static class SessionExtensions
     {

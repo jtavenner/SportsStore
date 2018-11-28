@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using SportsStore.Infrastructure;
+using TravelsStore.Infrastructure;
 
-namespace SportsStore.Models
+namespace TravelsStore.Models
 {
     public class SessionCart : Cart
     {
@@ -21,15 +21,15 @@ namespace SportsStore.Models
         [JsonIgnore]
         public ISession Session { get; set; }
 
-        public override void AddItem(Product product, int quantity)
+        public override void AddItem(Trip trip, int quantity)
         {
-            base.AddItem(product, quantity);
+            base.AddItem(trip, quantity);
             Session.SetJson("Cart", this);
         }
 
-        public override void RemoveLine(Product product)
+        public override void RemoveLine(Trip trip)
         {
-            base.RemoveLine(product);
+            base.RemoveLine(trip);
             Session.SetJson("Cart", this);
         }
 

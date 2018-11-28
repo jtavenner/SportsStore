@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using SportsStore.Models;
+using TravelsStore.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace SportsStore
+namespace TravelsStore
 {
     public class Startup
     {
@@ -23,8 +23,8 @@ namespace SportsStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-                                                                                Configuration["Data:SportsStoreProducts:ConnectionString"]));
-            services.AddTransient<IProductRepository, EFProductRepository>();
+                                                                                Configuration["Data:TravelsStoreTrips:ConnectionString"]));
+            services.AddTransient<ITripRepository, EFTripRepository>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc();
@@ -42,23 +42,23 @@ namespace SportsStore
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: null,
-                    template: "{category}/Page{productPage:int}",
-                    defaults: new { controller = "Product", action = "List" }
+                    template: "{category}/Page{tripPage:int}",
+                    defaults: new { controller = "Trip", action = "List" }
                     );
                 routes.MapRoute(
                     name: null,
-                    template: "Page{productPage:int}",
-                    defaults: new {controller = "Product", action = "List", productPage = 1}
+                    template: "Page{tripPage:int}",
+                    defaults: new {controller = "Trip", action = "List", tripPage = 1}
                     );
                 routes.MapRoute(
                     name: null,
                     template: "{category}",
-                    defaults: new { controller = "Product", action = "List", productPage = 1 }
+                    defaults: new { controller = "Trip", action = "List", tripPage = 1 }
                     );
                 routes.MapRoute(
                     name: null,
                     template: "",
-                    defaults: new { controller = "Product", action = "List", productPage = 1 }
+                    defaults: new { controller = "Trip", action = "List", tripPage = 1 }
                     );
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });

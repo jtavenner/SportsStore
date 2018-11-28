@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using SportsStore.Models;
+using TravelsStore.Models;
 
-namespace SportsStore.Components
+namespace TravelsStore.Components
 {
     public class NavigationMenuViewComponent : ViewComponent
     {
-        private IProductRepository repository;
+        private ITripRepository repository;
 
-        public NavigationMenuViewComponent(IProductRepository repo)
+        public NavigationMenuViewComponent(ITripRepository repo)
         {
             repository = repo;
         }
@@ -16,7 +16,7 @@ namespace SportsStore.Components
         public IViewComponentResult Invoke()
         {
             ViewBag.SelectedCategory = RouteData?.Values["category"];
-            return View(repository.Products
+            return View(repository.Trips
                         .Select(x => x.Category)
                         .Distinct()
                         .OrderBy(x => x));

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SportsStore.Models
+namespace TravelsStore.Models
 {
     public class ApplicationDbContext : DbContext
     {
@@ -11,6 +11,6 @@ namespace SportsStore.Models
         {
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Trip> Trips { get; set; }
     }
 }

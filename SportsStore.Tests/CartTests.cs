@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using SportsStore.Models;
+using TravelsStore.Models;
 using Xunit;
 
-namespace SportsStore.Tests
+namespace TravelsStore.Tests
 {
     public class CartTests
     {
@@ -10,8 +10,8 @@ namespace SportsStore.Tests
         public void Can_Add_New_Lines()
         {
             //arrange
-            Product p1 = new Product { ProductID = 1, Name = "P1" };
-            Product p2 = new Product { ProductID = 2, Name = "P2" };
+            Trip p1 = new Trip { TripID = 1, Name = "P1" };
+            Trip p2 = new Trip { TripID = 2, Name = "P2" };
 
             Cart target = new Cart();
 
@@ -22,16 +22,16 @@ namespace SportsStore.Tests
 
             //assert
             Assert.Equal(2, results.Length);
-            Assert.Equal(p1, results[0].Product);
-            Assert.Equal(p2, results[1].Product);
+            Assert.Equal(p1, results[0].Trip);
+            Assert.Equal(p2, results[1].Trip);
         }
 
         [Fact]
         public void Can_Add_Quantity_For_Existing_Lines()
         {
             //arrange
-            Product p1 = new Product { ProductID = 1, Name = "P1" };
-            Product p2 = new Product { ProductID = 2, Name = "P2" };
+            Trip p1 = new Trip { TripID = 1, Name = "P1" };
+            Trip p2 = new Trip { TripID = 2, Name = "P2" };
 
             Cart target = new Cart();
 
@@ -40,7 +40,7 @@ namespace SportsStore.Tests
             target.AddItem(p2, 1);
             target.AddItem(p1, 10);
             CartLine[] results = target.Lines
-                   .OrderBy(c => c.Product.ProductID).ToArray();
+                   .OrderBy(c => c.Trip.TripID).ToArray();
 
             //assert
             Assert.Equal(2, results.Length);
@@ -52,9 +52,9 @@ namespace SportsStore.Tests
         public void Can_Remove_Line()
         {
             //arrange
-            Product p1 = new Product { ProductID = 1, Name = "P1" };
-            Product p2 = new Product { ProductID = 2, Name = "P2" };
-            Product p3 = new Product { ProductID = 3, Name = "P3" };
+            Trip p1 = new Trip { TripID = 1, Name = "P1" };
+            Trip p2 = new Trip { TripID = 2, Name = "P2" };
+            Trip p3 = new Trip { TripID = 3, Name = "P3" };
 
             Cart target = new Cart();            
             target.AddItem(p1, 1);
@@ -67,8 +67,8 @@ namespace SportsStore.Tests
             target.RemoveLine(p2);
 
             //assert
-            //Assert.Equal(0, target.Lines.Where(c => c.Product == p2).Count());
-            Assert.Empty(target.Lines.Where(c => c.Product == p2));
+            //Assert.Equal(0, target.Lines.Where(c => c.Trip == p2).Count());
+            Assert.Empty(target.Lines.Where(c => c.Trip == p2));
             Assert.Equal(2, target.Lines.Count());
         }
 
@@ -76,8 +76,8 @@ namespace SportsStore.Tests
         public void Calculate_Cart_Total()
         {
             //arrange
-            Product p1 = new Product { ProductID = 1, Name = "P1", Price = 100M };
-            Product p2 = new Product { ProductID = 2, Name = "P2", Price = 50M};
+            Trip p1 = new Trip { TripID = 1, Name = "P1", Price = 100M };
+            Trip p2 = new Trip { TripID = 2, Name = "P2", Price = 50M};
 
             Cart target = new Cart();
 
@@ -97,8 +97,8 @@ namespace SportsStore.Tests
         public void Can_Clear_Contents()
         {
             //arrange
-            Product p1 = new Product { ProductID = 1, Name = "P1", Price = 100M };
-            Product p2 = new Product { ProductID = 2, Name = "P2", Price = 50M };
+            Trip p1 = new Trip { TripID = 1, Name = "P1", Price = 100M };
+            Trip p2 = new Trip { TripID = 2, Name = "P2", Price = 50M };
 
             Cart target = new Cart();
 
