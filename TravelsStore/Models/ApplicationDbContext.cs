@@ -14,3 +14,6 @@ namespace TravelsStore.Models
         public DbSet<Trip> Trips { get; set; }
     }
 }
+
+
+// this connent is add to the 'test branch' to test the merging requests!!
